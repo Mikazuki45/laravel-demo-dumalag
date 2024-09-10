@@ -31,7 +31,7 @@ Route::get('/Services', function () {
 })->name('services');//route for services
 
 Route::get('/Calculator', [CalculatorController::class, 'showCalculatorPage']);
-
+Route::post('/calculate', [CalculatorController::class, 'calculate'])->name('callcalculate');
 
 
 Route::get('/dashboard', function () {
