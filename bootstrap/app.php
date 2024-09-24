@@ -11,7 +11,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias(['login.middleware' => \App\Http\Middleware\validateLogin::class,]);
+        //register middleware using aliases name
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

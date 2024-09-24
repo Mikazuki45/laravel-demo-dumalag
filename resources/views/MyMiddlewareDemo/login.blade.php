@@ -9,7 +9,8 @@
 <body>
     <h1>Log in</h1>
     <div class="mx-auto text-center">
-        <form action="" method="POST">
+        <form action="{{ route('login_Form')}}" method="POST">
+            @csrf
             <input type="text"
                     name="username"
                     placeholder="Enter Username"
@@ -23,6 +24,11 @@
                 Log In
             </button>
         </form>
+        @if($errors->any())
+            <div>
+                <strong class="text-red-500">{{ $errors->first() }}</strong>
+            </div>
+        @endif
     </div>
 </body>
 </html>

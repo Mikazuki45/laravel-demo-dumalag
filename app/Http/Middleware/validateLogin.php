@@ -15,6 +15,22 @@ class validateLogin
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if($request->isMethod('post'))
+        {
+            $validatedData = $request->only('username', 'password');
+            
+            $username = "admin";
+            $password = "admin";
+
+            if($validatedData['username'] === $username && $validatedData['password'] === $password)
+            {
+                return redirect()->route('gotodashboard');
+            }
+            else
+            {
+                return redirect()->back()->withErrors([$username => 'username or password is incorrect!']);
+            }
+        }
         return $next($request);
     }
 }

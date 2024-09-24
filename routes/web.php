@@ -17,9 +17,28 @@ Route::get('/Curl2', function (){
     return view('dumalag2');
 })->name('ani ni');
 
-Route::get('/middleware', function (){
-    return view('MyMiddlewareDemo.login');
-});
+// Route::get('/middleware', function (){
+//     return view('MyMiddlewareDemo.login');
+// });
+
+//middlware
+Route::get('/showLogin', function()
+{
+    return view("MyMiddlewareDemo.login");
+})->name('login_Form');
+
+Route::post('/showLogin', function()
+{
+    return view("MyMiddlewareDemo.login");
+})->name('login.middleware');
+
+Route::get('/show/dashboard', function()
+{
+    return view("MyMiddlewareDemo.dashboard");
+})->name('gotodashboard');
+
+
+
 
 //index
 Route::get('/main', [DumalagPrelimController::class, 'main'])->name('main');
