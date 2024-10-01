@@ -6,7 +6,18 @@
     <title>Dashboard Page - Demo Middleware</title>
 </head>
 <body>
-    <h1>Dashboard</h1>
-    @csrf
+    @if (session('confirm'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                Swal.fire({
+                title: "Successfully Logged in!",
+                text: "Welcome Admin!",
+                icon: "success"
+                });
+            });
+        </script>
+        @endif
+        <h1>This is Dashboard</h1>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
