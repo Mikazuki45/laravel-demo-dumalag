@@ -15,7 +15,7 @@ class validateLogin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if($request->isMethod('post'))
+        if($request->isMethod('Post'))
         {
             $validatedData = $request->only('username', 'password');
             

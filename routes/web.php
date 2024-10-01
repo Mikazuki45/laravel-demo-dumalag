@@ -30,13 +30,12 @@ Route::get('/showLogin', function()
 Route::post('/showLogin', function()
 {
     return view("MyMiddlewareDemo.login");
-})->name('login.middleware');
+})->middleware('login.middleware');
 
 Route::get('/show/dashboard', function()
 {
     return view("MyMiddlewareDemo.dashboard");
 })->name('gotodashboard');
-
 
 
 
@@ -58,6 +57,8 @@ Route::post('/calculatemultiplication', [DumalagPrelimController::class, 'calcul
 //divide
 Route::get('/division', [DumalagPrelimController::class, 'division']);
 Route::post('/calculatedivision', [DumalagPrelimController::class, 'calculatedivision'])->name('calculate.division');
+
+
 
 
 Route::get('/Gallery', function (){
