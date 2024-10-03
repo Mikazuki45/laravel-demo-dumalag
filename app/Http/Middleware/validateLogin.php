@@ -26,7 +26,8 @@ class validateLogin
             {
                 // return redirect()->route('gotodashboard');
                 // return redirect()->away('https://netflix.com');
-                return redirect()->route('gotodashboard')->with('confirm', 'LOGGED IN SUCCESSFULLY');
+                
+                return redirect()->route('gotodashboard')->with('confirm', 'LOGGED IN SUCCESSFULLY!');
             }
             else
             {
