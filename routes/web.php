@@ -21,6 +21,16 @@ Route::get('/Curl2', function (){
 //     return view('MyMiddlewareDemo.login');
 // });
 
+
+Route::get('/discount', function() {
+    return view('Midterm.dumalag_midterm');
+})->name('disccal');
+
+Route::get('/new-calculator', [MyCalculatorController::class, 
+    'showCalculator'
+])->name('show');
+
+
 //middlware
 Route::get('/showLogin', function()
 {
@@ -36,6 +46,18 @@ Route::get('/show/dashboard', function()
 {
     return view("MyMiddlewareDemo.dashboard");
 })->name('gotodashboard');
+
+
+
+Route::controller(MyCalculatorController::class)->group(function () {
+    Route::get('new-calculator','showCalculator')->name('show');
+    Route::post('new-calculator', 'calculateSum')->name('showCalculate');
+});
+
+Route::controller(discountController::class)->group(function () {
+    Route::get('discount-app','showAmount')->name('show1');
+    Route::post('discount-app', 'calculateTotal')->name('disccal');
+});
 
 
 
