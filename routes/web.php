@@ -110,9 +110,13 @@ Route::get('/Calculator', [CalculatorController::class, 'showCalculatorPage']);
 Route::post('/calculate', [CalculatorController::class, 'calculate'])->name('callcalculate');
 
 
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return view('NewDashboard');
+})->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
