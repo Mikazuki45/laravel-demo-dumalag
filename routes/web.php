@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CalculatorController;
 use App\Http\Controllers\DumalagPrelimController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,13 +23,22 @@ Route::get('/Curl2', function (){
 // });
 
 
-Route::get('/discount', function() {
-    return view('Midterm.dumalag_midterm');
-})->name('disccal');
+// Route::get('/discount', function() {
+//     return view('Midterm.dumalag_midterm');
+// })->name('disccal');
 
 Route::get('/new-calculator', [MyCalculatorController::class, 
     'showCalculator'
 ])->name('show');
+
+
+
+Route::get('/Login', function () {
+    return view('index');
+})->name('login1');;
+
+
+Route::get('/signup', [LoginController::class, 'signup'])->name('signup_Form');
 
 
 //middlware
