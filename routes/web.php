@@ -27,7 +27,7 @@ Route::get('/main-dashboard', function () {
 
 
 
-Route::get('/ddd', function () {
+Route::get('/dddasfagvs', function () {
     return view('welcome');
 });
 
@@ -129,6 +129,8 @@ Route::get('/Calculator', [CalculatorController::class, 'showCalculatorPage']);
 Route::post('/calculate', [CalculatorController::class, 'calculate'])->name('callcalculate');
 
 
+
+//Default Dashboard
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
