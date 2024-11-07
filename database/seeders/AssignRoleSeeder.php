@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class AssignRoleSeeder extends Seeder
 {
@@ -12,6 +13,8 @@ class AssignRoleSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Role::create(['name'=>'admin']);
+        Role::create(['name'=>'judge']);
+        Role::create(['name'=>'staff']);
     }
 }
