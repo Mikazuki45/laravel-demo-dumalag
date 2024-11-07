@@ -6,7 +6,28 @@ use App\Http\Controllers\DumalagPrelimController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
+
+// FINAL 
 Route::get('/', function () {
+    return view('index');
+})->name('login1');;
+
+Route::get('/signup', [LoginController::class, 'signup'])->name('signup_Form');
+
+Route::get('/main-dashboard', function () {
+    return view('newDashboard');
+})->name('main-dashboard');;
+
+//END FINAL
+
+
+
+
+
+
+
+
+Route::get('/ddd', function () {
     return view('welcome');
 });
 
@@ -33,12 +54,10 @@ Route::get('/new-calculator', [MyCalculatorController::class,
 
 
 
-Route::get('/Login', function () {
-    return view('index');
-})->name('login1');;
 
 
-Route::get('/signup', [LoginController::class, 'signup'])->name('signup_Form');
+
+
 
 
 //middlware

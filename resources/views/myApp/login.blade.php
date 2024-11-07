@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIN PAGE </title>
+    <title>LOGIN PAGE - </title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-black flex items-center justify-center min-h-screen">
     <div class="bg-white shadow-lg rounded-lg p-8 max-w-sm w-full">
-        <h2 class="text-2xl font-bold text-center mb-6">LOGIN</h2>
-        <form action="{{route('login')}}" method="POST">
+        <h2 class="text-2xl font-bold text-center mb-6">Welcome Back!</h2>
+        <form action="{{route('gotodashboard')}}" method="POST">
             @csrf
             <div class="mb-4">
-                <label for="username" class="block text-sm font-large text-gray-700">Email</label>
-                <input type="email" name="email" id="username" placeholder="Enter Email" required autofocus 
+                <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                <input type="text" name="username" id="username" placeholder="Enter Username" required autofocus 
                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
             <div class="mb-4">
-                <label for="password" class="block text-sm font-large text-gray-700">Password</label>
+                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
                 <input type="password" name="password" id="password" placeholder="Enter Password" required 
                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
