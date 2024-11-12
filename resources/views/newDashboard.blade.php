@@ -1,28 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    @if(!Auth::check())
-        <h1>You are not authenticated, please login <a href="{{route('login')}}">LOGIN</a></h1>
-    @else
-        <h1>Welcome to Dashboard, {{ Auth::user()->name }}</h1>
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <x-dropdown-link :href="route('logout')"
-                    onclick="event.preventDefault();
-                                this.closest('form').submit();">
-                {{ __('Log Out')}}
-            </x-dropdown-link>
-        </form>
-    @endif
-</body>
-</html> -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -203,44 +178,54 @@
         </div>
         <div class="navbar-profile">
             <img src="https://www.w3schools.com/w3images/avatar2.png" alt="User Avatar">
-            <span>John Doe</span>
+            <span>{{ Auth::user()->name }}</span>
         </div>
     </nav>
 
     <!-- Main Content Container -->
-    <div class="container">
+    <div class="main-content">
         @if(!Auth::check())
-            <h1>You are not authenticated</h1>
-            <p>Please login to access the dashboard</p>
-            <a href="{{ route('login1') }}" class="btn">Login</a>
+            <div class="center-container">
+                <h1>You are not authenticated</h1>
+                <p>Please login to access the dashboard</p>
+                <a href="{{ route('login1') }}" class="btn-login">Login</a>
+            </div>
         @else
-            <h1>Welcome to your Dashboard, {{ Auth::user()->name }}</h1>
-            <p>Here's a quick overview of your dashboard.</p>
+            <div class="center-container">
+                @if(Auth::user()->hasRole('admin'))
+                    <h1>Welcome Admin, {{ Auth::user()->name }}</h1>
+                @elseif(Auth::user()->hasRole('judge'))
+                    <h1>Welcome Judge, {{ Auth::user()->name }}</h1>
+                @elseif(Auth::user()->hasRole('staff'))
+                    <h1>Welcome Staff, {{ Auth::user()->name }}</h1>
+                @endif
+                <p>Here's a quick overview of your dashboard.</p>
 
-            <!-- Dashboard Cards -->
-            <div class="card">
-                <h3>Your Profile</h3>
-                <p>Manage your profile settings and update your information.</p>
-                <a href="#" class="btn">Go to Profile</a>
+                <!-- Dashboard Cards -->
+                <div class="card">
+                    <h2>Your Profile</h2>
+                    <p>Manage your profile settings and update your information.</p>
+                    <a href="#" class="btn">Go to Profile</a>
+                </div>
+
+                <div class="card">
+                    <h2>Your Messages</h2>
+                    <p>Check and respond to your recent messages.</p>
+                    <a href="#" class="btn">View Messages</a>
+                </div>
+
+                <div class="card">
+                    <h2>Account Settings</h2>
+                    <p>Update your account settings and preferences.</p>
+                    <a href="#" class="btn">Go to Settings</a>
+                </div>
+
+                <!-- Log Out Button -->
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="btn" style="background-color: #dc3545; margin-top: 20px;">Log Out</button>
+                </form>
             </div>
-
-            <div class="card">
-                <h3>Your Messages</h3>
-                <p>Check and respond to your recent messages.</p>
-                <a href="#" class="btn">View Messages</a>
-            </div>
-
-            <div class="card">
-                <h3>Account Settings</h3>
-                <p>Update your account settings and preferences.</p>
-                <a href="#" class="btn">Go to Settings</a>
-            </div>
-
-            <!-- Log Out Button -->
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button type="submit" class="btn" style="background-color: #dc3545; margin-top: 20px;">Log Out</button>
-            </form>
         @endif
     </div>
 
