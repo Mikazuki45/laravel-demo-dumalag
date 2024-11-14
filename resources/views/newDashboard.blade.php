@@ -169,7 +169,7 @@
 <body>
     <!-- Navbar -->
     <nav>
-        <div class="navbar-logo">SocialApp</div>
+        <div class="navbar-logo">School Management</div>
         <div class="navbar-links">
             <a href="#">Home</a>
             <a href="#">Explore</a>
@@ -178,7 +178,6 @@
         </div>
         <div class="navbar-profile">
             <img src="https://www.w3schools.com/w3images/avatar2.png" alt="User Avatar">
-            <span>{{ Auth::user()->name }}</span>
         </div>
     </nav>
 
@@ -188,16 +187,22 @@
             <div class="center-container">
                 <h1>You are not authenticated</h1>
                 <p>Please login to access the dashboard</p>
-                <a href="{{ route('login1') }}" class="btn-login">Login</a>
+                <a href="{{ route('login_form') }}" class="btn-login">Login</a>
             </div>
         @else
             <div class="center-container">
                 @if(Auth::user()->hasRole('admin'))
-                    <h1>Welcome Admin, {{ Auth::user()->name }}</h1>
+                    <h1>Welcome Admin!, {{ Auth::user()->name }}</h1>
                 @elseif(Auth::user()->hasRole('judge'))
-                    <h1>Welcome Judge, {{ Auth::user()->name }}</h1>
+                    <h1>Welcome Judge!, {{ Auth::user()->name }}</h1>
                 @elseif(Auth::user()->hasRole('staff'))
-                    <h1>Welcome Staff, {{ Auth::user()->name }}</h1>
+                    <h1>Welcome Staff!, {{ Auth::user()->name }}</h1>
+                @elseif(Auth::user()->hasRole('school_admin'))
+                    <h1>Welcome!, {{ Auth::user()->name }}</h1>
+                @elseif(Auth::user()->hasRole('registrar'))
+                    <h1>Welcome!, {{ Auth::user()->name }}</h1>
+                @elseif(Auth::user()->hasRole('faculty'))
+                    <h1>Welcome!, {{ Auth::user()->name }}</h1>
                 @endif
                 <p>Here's a quick overview of your dashboard.</p>
 

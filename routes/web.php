@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 // FINAL 
 Route::get('/', function () {
     return view('index');
-})->name('login1');;
+})->name('login_form');;
 
 Route::get('/signup', [LoginController::class, 'signup'])->name('signup_Form');
 

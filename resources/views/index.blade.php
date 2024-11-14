@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIN PAGE </title>
+    <title>School Management System</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-black flex items-center justify-center min-h-screen">
     <div class="bg-white shadow-lg rounded-lg p-8 max-w-sm w-full">
-        <h2 class="text-2xl font-bold text-center mb-6">LOGIN</h2>
+        <h2 class="text-2xl font-bold text-center mb-6">School Management System</h2>
         <form action="{{route('login')}}" method="POST">
             @csrf
             <div class="mb-4">

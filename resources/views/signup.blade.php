@@ -36,6 +36,9 @@
                     <option value="admin">Administrator</option>
                     <option value="judge">Judge</option>
                     <option value="staff">Staff</option>
+                    <option value="school_admin">School Administrator</option>
+                    <option value="registrar">Registrar</option>
+                    <option value="faculty">Faculty</option>
                 </select>
             </div>
 
