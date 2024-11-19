@@ -11,6 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+
+        $middleware->append(\App\Http\Middleware\PreventBackOptionAfterLogoutMiddleware::class,);
+
         $middleware->alias([
             'login.middleware' => \App\Http\Middleware\validateLogin::class,
             'role' => \App\Http\Middleware\validateLogin::class,
