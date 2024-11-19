@@ -14,9 +14,9 @@ Route::get('/', function () {
 
 Route::get('/signup', [LoginController::class, 'signup'])->name('signup_Form');
 
-Route::get('/main-dashboard', function () {
-    return view('newDashboard');
-})->name('main-dashboard');;
+// Route::get('/main-dashboard', function () {
+//     return view('newDashboard');
+// })->name('main-dashboard');;
 
 //END FINAL
 
@@ -51,6 +51,18 @@ Route::get('/Curl2', function (){
 Route::get('/new-calculator', [MyCalculatorController::class, 
     'showCalculator'
 ])->name('show');
+
+
+
+
+//middleware role
+Route::middleware(['auth'])->   group(function () {
+    Route::middleware(['role:admin'])->prefix('admin')->group(function(){
+        Route::get('/main-dashboard', function () {
+            return view('newDashboard');
+        })->name('main-dashboard');;
+    });
+});
 
 
 

@@ -66,7 +66,7 @@
             <!-- Login Link -->
             <p class="mt-4 text-center text-sm text-gray-600">
                 Already registered?
-                <a href="{{ route('login1') }}" class="text-blue-500 hover:underline">LOGIN</a>
+                <a href="{{ route('login_form') }}" class="text-blue-500 hover:underline">LOGIN</a>
             </p>
         </form>
 
