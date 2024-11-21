@@ -5,6 +5,7 @@ use App\Http\Controllers\CalculatorController;
 use App\Http\Controllers\DumalagPrelimController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MessageController;
 
 
 // FINAL 
@@ -57,7 +58,23 @@ Route::get('/new-calculator', [MyCalculatorController::class,
 
 //middleware role
 Route::middleware(['auth'])->   group(function () {
-    Route::middleware(['role:admin'])->prefix('admin')->group(function(){
+
+//admin routes
+    Route::middleware(['role:admin'])->prefix('admin')->name('admin.')->group(function(){
+        Route::get('/main-dashboard', function () {
+            return view('newDashboard');
+        })->name('main-dashboard');;
+    });
+
+//registraer routes
+    Route::middleware(['role:registrar'])->prefix('registrar')->name('registrar.')->group(function(){
+        Route::get('/main-dashboard', function () {
+            return view('newDashboard');
+        })->name('main-dashboard');;
+    });
+
+//faculty routes
+    Route::middleware(['role:faculty'])->prefix('faculty')->name('faculty.')->group(function(){
         Route::get('/main-dashboard', function () {
             return view('newDashboard');
         })->name('main-dashboard');;
@@ -68,6 +85,11 @@ Route::middleware(['auth'])->   group(function () {
 
 
 
+// Route for the messages index page
+Route::middleware(['auth'])->get('/messages', [MessageController::class, 'index'])->name('messages.index');
+
+// Route for viewing a specific message
+Route::middleware(['auth'])->get('/messages/{message}', [MessageController::class, 'show'])->name('messages.show');
 
 
 
