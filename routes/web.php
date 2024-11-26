@@ -93,6 +93,13 @@ Route::middleware(['auth'])->get('/messages/{message}', [MessageController::clas
 
 
 
+// protected $routeMiddleware = [
+//     // Other middlewares...
+//     'admin' => \App\Http\Middleware\IsAdmin::class,
+// ];
+
+
+
 
 //middlware
 Route::get('/showLogin', function()
