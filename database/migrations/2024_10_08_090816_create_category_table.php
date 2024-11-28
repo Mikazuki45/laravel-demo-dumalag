@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('event_id');
             $table->timestamps();
 
-            $table->foreign('event_id')->references('id')->on('event_data')->onDelete('restrict');
+            $table->foreign('event_id')->references('id')->on('event_data')->onDelete('restrict');//restrict dli ma delete tanan while ang cascade kay madelete isa related ana madelete tanan
         });
     }
 

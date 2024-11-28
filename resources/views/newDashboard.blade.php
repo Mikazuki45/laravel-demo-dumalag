@@ -247,8 +247,33 @@
                                 <button onclick="closeModal()" class="modal-close">X</button>
                             </div>
                             <div class="modal-body">
-                                <p>This is the modal body content!</p>
-                                <!-- You can place a form or content for adding an event here -->
+                                <h1>This is the modal body content!</h1>
+                                    <form action="{{ route('admin.add_event') }}" method="POST">
+                                    @csrf
+                                    <div>
+                                        <label for="event_name" class="text justify-start">Event</label>
+                                        <input type="text"
+                                                name="event_name"
+                                                id="event_name"
+                                                value="{{old('event_name')}}"
+                                                class="shadow appearance-none rounded w-full py-2 px-3 text-gray-700
+                                                        leading-tight focus:outline-none focus::shadow-outline
+                                                        @error('event_name') is-invalid @enderror" required>
+                                    </div>
+                                    <div>
+                                        <label for="event_description" class="text justify-start">Event Description</label>
+                                        <input type="text"
+                                                name="event_description"
+                                                id="event_description"
+                                                value="{{old('event_description')}}"
+                                                class="shadow appearance-none rounded w-full py-2 px-3 text-gray-700
+                                                        leading-tight focus:outline-none focus::shadow-outline
+                                                        @error('event_description') is-invalid @enderror" required>
+                                    </div>
+                                    <button type="submit" class="mt-3 mb-3 bg-blue-500 text-white w-full px-2 py-2">
+                                        Add Event
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>

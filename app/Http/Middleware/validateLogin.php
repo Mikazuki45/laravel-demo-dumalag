@@ -22,19 +22,19 @@ class validateLogin
             $username = "admin";
             $password = "admin";
 
-            if($validatedData['username'] === $username && $validatedData['password'] === $password)
-            {
-                // return redirect()->route('gotodashboard');
-                // return redirect()->away('https://netflix.com');
+            // if($validatedData['username'] === $username && $validatedData['password'] === $password)
+            // {
+            //     // return redirect()->route('gotodashboard');
+            //     // return redirect()->away('https://netflix.com');
                 
-                // return redirect()->route('gotodashboard')->with('confirm', 'LOGGED IN SUCCESSFULLY!');
+            //     // return redirect()->route('gotodashboard')->with('confirm', 'LOGGED IN SUCCESSFULLY!');
 
-                return response()->json(['Successfully Logged in']);
-            }
-            else
-            {
-                return redirect()->back()->withErrors([$username => 'username or password is incorrect!']);
-            }
+            //     return response()->json(['Successfully Logged in']);
+            // }
+            // else
+            // {
+            //     return redirect()->back()->withErrors([$username => 'username or password is incorrect!']);
+            // }
         }
         return $next($request);
     }

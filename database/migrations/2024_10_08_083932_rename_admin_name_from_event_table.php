@@ -11,7 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        schema::rename('event', 'event_data');
+        Schema::table('event', function (Blueprint $table) {
+            // $table->rename('adminName', 'admin_name');
+            $table->renameColumn('adminName','admin_name');
+        });
     }
 
     /**
@@ -19,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('event', function (Blueprint $table) {
+            //
+        });
     }
 };

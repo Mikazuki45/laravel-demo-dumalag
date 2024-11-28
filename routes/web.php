@@ -6,6 +6,7 @@ use App\Http\Controllers\DumalagPrelimController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\EventController;
 
 
 // FINAL 
@@ -57,16 +58,30 @@ Route::get('/new-calculator', [MyCalculatorController::class,
 
 
 //middleware role
-Route::middleware(['auth'])->   group(function () {
+Route::middleware(['auth'])->group(function () {
 
 //admin routes
     Route::middleware(['role:admin'])->prefix('admin')->name('admin.')->group(function(){
         Route::get('/main-dashboard', function () {
             return view('newDashboard');
         })->name('main-dashboard');;
+        //route2
+        Route::controller(EventController::class)->group(function(){
+            Route::post('/add_event','add_event')->name('add_event');
+        });
     });
 
-//registraer routes
+    
+
+
+
+
+
+
+
+
+
+//registrar routes
     Route::middleware(['role:registrar'])->prefix('registrar')->name('registrar.')->group(function(){
         Route::get('/main-dashboard', function () {
             return view('newDashboard');
