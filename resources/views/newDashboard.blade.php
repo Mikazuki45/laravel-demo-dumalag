@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Social Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/solid.min.css">
     <style>
         /* Global Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5; /* Facebook-like light gray background */
+            background-color: #f0f2f5; /* Light background for Facebook-like feel */
             margin: 0;
             padding: 0;
             display: flex;
@@ -31,8 +35,8 @@
         .navbar-logo {
             font-size: 24px;
             font-weight: bold;
-            color: white;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .navbar-links {
@@ -44,9 +48,9 @@
             color: white;
             text-decoration: none;
             font-size: 16px;
-            padding: 10px 15px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
         .navbar-links a:hover {
@@ -73,36 +77,69 @@
             align-items: center;
             padding: 40px;
             flex: 1;
-            background-color: #fff;
+            background-color: white;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             margin: 20px;
-        }
-
-        /* Center Container for Login */
-        .center-container {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            max-width: 450px;
             width: 100%;
-            text-align: center;
-            margin-top: 20px;
+            max-width: 1200px;
         }
 
-        h1 {
+        h2 {
             color: #333;
-            font-size: 26px;
+            font-size: 28px;
             margin-bottom: 20px;
+            font-weight: 600;
         }
 
-        p {
-            color: #555;
-            margin-bottom: 20px;
-            font-size: 16px;
+        /* Centering the Table */
+        .table-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center; /* Center the table horizontally */
         }
 
+        table {
+            width: 100%;
+            max-width: 800px; /* Restrict the table width */
+            margin-top: 20px;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #1877f2;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        td i {
+            cursor: pointer;
+            margin-right: 10px;
+            transition: color 0.3s ease;
+        }
+
+        td i:hover {
+            color: #1877f2;
+        }
+
+        /* Button Styles */
         .btn-login {
             background-color: #1877f2;
             color: white;
@@ -110,59 +147,13 @@
             border-radius: 4px;
             font-size: 16px;
             text-decoration: none;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-top: 20px;
         }
 
         .btn-login:hover {
             background-color: #166fe5;
-        }
-
-        /* Dashboard Cards */
-        .card {
-            width: 100%;
-            max-width: 900px;
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        .card h2 {
-            color: #333;
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #555;
-            font-size: 14px;
-        }
-
-        .card .btn {
-            background-color: #ff0050;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 4px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 16px;
-            width: max-content;
-            align-self: flex-start;
-            transition: background-color 0.3s ease;
-        }
-
-        .card .btn:hover {
-            background-color: #e60039;
         }
 
         /* Modal Styles */
@@ -182,6 +173,7 @@
             border-radius: 8px;
             max-width: 500px;
             width: 100%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .modal-header {
@@ -195,10 +187,36 @@
             font-size: 18px;
             background-color: transparent;
             border: none;
+            color: #333;
         }
 
         .modal-body {
             margin-top: 20px;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        .modal button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal button:hover {
+            background-color: #166fe5;
         }
 
         /* Footer Styles */
@@ -209,13 +227,23 @@
             padding: 15px 0;
             margin-top: 30px;
         }
-
     </style>
 </head>
 
-@vite(['resources/css/app.css', 'resources/js/app.js'])
-
 <body>
+
+    @if (session('success'))
+        <x-sweetalert type="success" :message="session('success')" />
+    @endif
+
+    @if (session('info'))
+        <x-sweetalert type="info" :message="session('info')" />
+    @endif
+
+    @if (session('error'))
+        <x-sweetalert type="error" :message="session('error')" />
+    @endif
+
     <!-- Navbar -->
     <nav>
         <div class="navbar-logo">School Management</div>
@@ -230,84 +258,68 @@
         </div>
     </nav>
 
-    <!-- Main Content Container -->
+    <!-- Table of Events -->
     <div class="main-content">
-        <div class="center-container">
-            @if(Auth::user()->hasRole('admin'))
-                <h1 class="mb-4">Welcome Admin!, {{ Auth::user()->name }}!</h1>
-                <div class="mx-auto">
-                    <button onclick="openModal()" class="btn-login mb-4">
-                        Add Event
-                    </button>
-                    <!-- Modal -->
-                    <div id="modal" class="modal">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h2>Add Event</h2>
-                                <button onclick="closeModal()" class="modal-close">X</button>
+        <h2>Events List</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Event Name</th>
+                        <th>Event Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if($events->isEmpty())
+                        <tr>
+                            <td colspan="4" class="text-center">No events available</td>
+                        </tr>
+                    @else
+                        @foreach($events as $event)
+                            <tr>
+                                <td>{{ $event->id }}</td>
+                                <td>{{ $event->event_name }}</td>
+                                <td>{{ $event->event_description }}</td>
+                                <td><i class="fa-regular fa-pen-to-square"></i> | <i class="fa-solid fa-trash-can"></i></td>
+                            </tr>
+                        @endforeach
+                    @endif
+                </tbody>
+            </table>
+        </div>
+
+        @if(Auth::user()->hasRole('admin'))
+            <!-- Add Event Button -->
+            <button onclick="openModal()" class="btn-login">
+                Add Event
+            </button>
+
+            <!-- Modal -->
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Add Event</h2>
+                        <button onclick="closeModal()" class="modal-close">X</button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('admin.add_event') }}" method="POST">
+                            @csrf
+                            <div>
+                                <label for="event_name">Event Name</label>
+                                <input type="text" name="event_name" id="event_name" value="{{ old('event_name') }}" required>
                             </div>
-                            <div class="modal-body">
-                                <h1>This is the modal body content!</h1>
-                                    <form action="{{ route('admin.add_event') }}" method="POST">
-                                    @csrf
-                                    <div>
-                                        <label for="event_name" class="text justify-start">Event</label>
-                                        <input type="text"
-                                                name="event_name"
-                                                id="event_name"
-                                                value="{{old('event_name')}}"
-                                                class="shadow appearance-none rounded w-full py-2 px-3 text-gray-700
-                                                        leading-tight focus:outline-none focus::shadow-outline
-                                                        @error('event_name') is-invalid @enderror" required>
-                                    </div>
-                                    <div>
-                                        <label for="event_description" class="text justify-start">Event Description</label>
-                                        <input type="text"
-                                                name="event_description"
-                                                id="event_description"
-                                                value="{{old('event_description')}}"
-                                                class="shadow appearance-none rounded w-full py-2 px-3 text-gray-700
-                                                        leading-tight focus:outline-none focus::shadow-outline
-                                                        @error('event_description') is-invalid @enderror" required>
-                                    </div>
-                                    <button type="submit" class="mt-3 mb-3 bg-blue-500 text-white w-full px-2 py-2">
-                                        Add Event
-                                    </button>
-                                </form>
+                            <div>
+                                <label for="event_description">Event Description</label>
+                                <input type="text" name="event_description" id="event_description" value="{{ old('event_description') }}" required>
                             </div>
-                        </div>
+                            <button type="submit">Add Event</button>
+                        </form>
                     </div>
                 </div>
-            @else
-                <h1>Welcome!, {{ Auth::user()->name }}!</h1>
-            @endif
-            <p>Here's a quick overview of your dashboard.</p>
-
-            <!-- Dashboard Cards -->
-            <div class="card">
-                <h2>Your Profile</h2>
-                <p>Manage your profile settings and update your information.</p>
-                <a href="#" class="btn">Go to Profile</a>
             </div>
-
-            <div class="card">
-                <h2>Your Messages</h2>
-                <p>Check and respond to your recent messages.</p>
-                <a href="{{ route('messages.index') }}" class="btn">View Messages</a>
-            </div>
-
-            <div class="card">
-                <h2>Account Settings</h2>
-                <p>Update your account settings and preferences.</p>
-                <a href="#" class="btn">Go to Settings</a>
-            </div>
-
-            <!-- Log Out Button -->
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button type="submit" class="btn" style="background-color: #dc3545; margin-top: 20px;">Log Out</button>
-            </form>
-        </div>
+        @endif
     </div>
 
     <!-- Footer -->
@@ -326,5 +338,7 @@
         }
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
+
 </html>
