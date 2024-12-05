@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\CategoryController;
 
 
 // FINAL 
@@ -66,7 +67,12 @@ Route::middleware(['auth'])->group(function () {
         Route::controller(EventController::class)->group(function(){
             Route::get('/main-dashboard', 'index')->name('main-dashboard');
             Route::post('/add_event','add_event')->name('add_event');
+            Route::post('/update_event/{id}','update_event')->name('update_event');
         });
+    });
+    Route::controller(CategoryController::class)->group(function(){
+        Route::get('/category', 'index')->name('category');
+        Route::post('/add_category','add_category')->name('add_category');
     });
 
     
@@ -189,9 +195,7 @@ Route::post('/calculate', [CalculatorController::class, 'calculate'])->name('cal
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('NewDashboard');
-})->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

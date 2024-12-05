@@ -31,4 +31,5 @@ public function index()
         return redirect()->route('admin.main-dashboard')
                         ->with('success','Event Successfully Added!');
     }
+    
 }

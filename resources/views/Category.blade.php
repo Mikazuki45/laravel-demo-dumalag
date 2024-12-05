@@ -262,11 +262,8 @@
     <div class="main-content">
         <h2>Events List</h2>
         <button onclick="openModal()" class="btn-login bg-black font-bold z-50">
-            Add Event
-        </button>
-        <a href="{{ route('admin.category')}}" class="text-center bg-blue-500 text-white py-2 px-2">
             Add Category
-        </a>
+        </button>
 
         <!-- Modal -->
         <div id="modal" class="modal">
@@ -276,17 +273,26 @@
                     <button onclick="closeModal()" class="modal-close">X</button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('admin.add_event') }}" method="POST">
+                    <form action="{{ route('admin.add_category') }}" method="POST" class="mt-5">
                         @csrf
+                        <select name="event_id" id="event_id">
+                            @if($events->isEmpty())
+                                <option value="">No Events Available</option>   
+                            @else
+                                @foreach($events as $event)
+                                    <option value="{{$event->id}}">{{$event->event_name}}</option>
+                                @endforeach
+                            @endif
+                        </select>
                         <div>
-                            <label for="event_name">Event Name</label>
-                            <input type="text" name="event_name" id="event_name" value="{{ old('event_name') }}" required>
+                            <label for="category_name">Category Name</label>
+                            <input type="text" name="category_name" id="category_name" value="{{ old('category_name') }}" required>
                         </div>
                         <div>
-                            <label for="event_description">Event Description</label>
-                            <input type="text" name="event_description" id="event_description" value="{{ old('event_description') }}" required>
+                            <label for="category_description">category Description</label>
+                            <input type="text" name="category_description" id="category_description" value="{{ old('category_description') }}" required>
                         </div>
-                        <button type="submit">Add Event</button>
+                        <button type="submit">Add Category</button>
                     </form>
                 </div>
             </div>
@@ -296,22 +302,24 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Event Name</th>
-                        <th>Event Description</th>
+                        <th>Category Name</th>
+                        <th>Category Description</th>
+                        <th>Event ID</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if($events->isEmpty())
+                    @if($catrgories->isEmpty())
                         <tr>
-                            <td colspan="4" class="text-center">No events available</td>
+                            <td colspan="4" class="text-center">No Categories available</td>
                         </tr>
                     @else
-                        @foreach($events as $event)
+                        @foreach($categories as $category)
                             <tr>
-                                <td>{{ $event->id }}</td>
-                                <td>{{ $event->event_name }}</td>
-                                <td>{{ $event->event_description }}</td>
+                                <td>{{ $category->id }}</td>
+                                <td>{{ $category->category_name }}</td>
+                                <td>{{ $category->category_description }}</td>
+                                <td>{{ $category->event_id }}</td>
                                 <td><i class="fa-regular fa-pen-to-square"></i> | <i class="fa-solid fa-trash-can"></i></td>
                             </tr>
                         @endforeach
@@ -319,11 +327,6 @@
                 </tbody>
             </table>
         </div>
-
-        @if(Auth::user()->hasRole('admin'))
-            <!-- Add Event Button -->
-            
-        @endif
     </div>
 
     <!-- Footer -->
